@@ -1,9 +1,10 @@
 package com.joe.strategy;
 
-public class CashFactory {
+public class CashContext {
 
-	public static CashSuper createCashAccept(String type) {
-		CashSuper cashSuper = null;
+	private CashSuper cashSuper = null;
+
+	public CashContext(String type) {
 		switch (type) {
 		case "Normal":
 			cashSuper = new CashNormal();
@@ -18,6 +19,9 @@ public class CashFactory {
 			cashSuper = new CashNormal();
 			break;
 		}
-		return cashSuper;
+	}
+
+	public Double getResult(Double money) {
+		return cashSuper.acceptCash(money);
 	}
 }
